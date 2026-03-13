@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00eeff;
+  --color-secondary: #0077ff;
+  --color-background-light: #f5f8f8;
+  --color-background-dark: #0f2223;
+  --color-surface-dark: #162e30;
+  --color-border-dark: #27393a;
+  --color-card-bg: #162a2b;
+
+  --font-display: "Space Grotesk", "Noto Sans KR", sans-serif;
+
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary/30;
+    background-image: radial-gradient(circle at 20% 20%, rgba(0, 238, 255, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(0, 238, 255, 0.05) 0%, transparent 40%);
+  }
+}
+
+@layer components {
+  .hud-line {
+    background: linear-gradient(90deg, transparent 0%, #00eeff 50%, transparent 100%);
+    height: 1px;
+    width: 100%;
+    opacity: 0.3;
+  }
+
+  .glass-panel {
+    background: rgba(22, 42, 43, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 238, 255, 0.1);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+    @apply transition-all;
+  }
+
+  .neon-glow:hover {
+    box-shadow: 0 0 25px rgba(0, 238, 255, 0.6);
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
+    border-color: #0ef;
+  }
+
+  .bg-piping {
+    background-image: linear-gradient(rgba(15, 34, 35, 0.95), rgba(15, 34, 35, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAl1OxKsISvyn_4sj4W669TzDXZFVtuHniRh2BprFmWZrlcdyz_KgMfFyYsLAEpAQQrRmWxYmPN7vcQIa2nPHJgdsSn1DRz03cxM0VOUU75A0iJ97IwRn9hjFJx7P_NiIkGUHyix0VIGuBL1cpmJdo3AT5nAwyCYgNmCji7S0wJoAwgm4l96l857Ul-nolx7P-mFKjw8XDmNnLhIsmqJOgiNzNNiQ98LQEyN2ObW3BKLdLHernKFsaSlycMdci9QpQahrwGsissgBU);
+    background-size: cover;
+    background-attachment: fixed;
+  }
+}
