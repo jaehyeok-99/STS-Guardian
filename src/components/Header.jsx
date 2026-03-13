@@ -8,7 +8,7 @@ function Header({ currentPage, setCurrentPage }) {
                     onClick={() => setCurrentPage('home')}
                 >
                     <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-[0_0_15px_rgba(0,238,255,0.4)] group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-background-dark font-bold">cyclone</span>
+                        <span className="material-symbols-outlined text-background-dark font-bold">directions_boat</span>
                     </div>
                     <h1 className="text-xl font-bold tracking-tight text-white">
                         STS <span className="text-primary font-light">Guardian</span>

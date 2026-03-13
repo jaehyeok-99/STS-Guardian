@@ -32,7 +32,7 @@ const Home = ({ setCurrentPage }) => {
 
                         <p className="text-xl lg:text-2xl text-slate-400 mb-14 max-w-3xl leading-relaxed">
                             이론 학습부터 시각적 체험, 그리고 실감형 시뮬레이션까지.<br className="hidden md:block" />
-                            액체수소 벙커링 전문가를 위한 통합 안전 교육 솔루션입니다.
+                            벙커링 전문가를 위한 통합 안전 교육 솔루션입니다.
                         </p>
 
                         <div className="flex flex-wrap gap-6 justify-center">
@@ -76,7 +76,7 @@ const Home = ({ setCurrentPage }) => {
                         <div className="text-center mb-16">
                             <h2 className="text-4xl font-black text-white mb-4 italic tracking-tighter underline decoration-primary underline-offset-8">CURRICULUM</h2>
                             <p className="text-slate-400 max-w-2xl mx-auto mt-6">
-                                이론부터 실무까지, 단계별 학습을 통해 액체수소 벙커링 안전 전문가로 성장하십시오.
+                                이론부터 실무까지, 단계별 학습을 통해 벙커링 안전 전문가로 성장하십시오.
                             </p>
                         </div>
 

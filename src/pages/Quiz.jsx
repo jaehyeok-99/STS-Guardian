@@ -14,7 +14,7 @@ const Quiz = () => {
                     <div className="mb-10 text-center">
                         <span className="text-xs font-mono text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">QUESTION 04 / 10</span>
                         <h3 className="text-2xl font-bold text-white mt-6 leading-relaxed">
-                            액체수소 벙커링 시작 전, 배관 내 산소 농도를 몇 % 이하로 유지해야 안전한가요?
+                            벙커링 시작 전, 배관 내 산소 농도를 몇 % 이하로 유지해야 안전한가요?
                         </h3>
                     </div>
 
