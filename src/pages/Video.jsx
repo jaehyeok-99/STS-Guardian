@@ -6,7 +6,7 @@ const VIDEO_LIST = [
         id: 1,
         title: '암모니아 STS 벙커링 작업 실연',
         desc: '본 영상은 암모니아 STS 벙커링의 전체적인 공정과 안전 수칙을 담고 있습니다.',
-        url: '/videos/test_video.mp4',
+        url: `${import.meta.env.BASE_URL}videos/test_video.mp4`,
         type: 'video/mp4',
         thumbnail: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAtg9dnAMQi0gHBIonK4De0JGm5mCJtoqXNdYBBNRq6iCz1Ob7_DsdeU4z91PWbTyVxJBlg2BgiUa7tVackmdKfIHP5j6xlIrFOFNXKFZmYNrAyXGxTQ3DGyRfS6kZWfOaVn64cQYWh7vAHJMjh2-mZZFP8-JPbqLUQ-LCNb3Dx2o4nJI7BHRMc53HpJnyhnSvMSgEcaFDGoklcZhgFRXMcRX7ozkG8SXC7OeF-vwhpFicttckbx4xxRR3b961WlRFv7HN-6NAIm7w',
         duration: '05:20'
