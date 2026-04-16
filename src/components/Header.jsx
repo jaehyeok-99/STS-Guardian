@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Header({ currentPage, setCurrentPage }) {
+function Header({ currentPage, setCurrentPage, fuelType, setFuelType }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const handleNavClick = (page) => {
@@ -9,19 +9,42 @@ function Header({ currentPage, setCurrentPage }) {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-dark/80 backdrop-blur-md">
+        <header className="sticky top-0 z-50 w-full border-b transition-colors duration-500 bg-background-dark/80 backdrop-blur-md border-primary/10">
             <div className="max-w-7xl mx-auto px-6 lg:px-20 h-20 flex items-center justify-between">
-                {/* Logo */}
-                <div
-                    className="flex items-center gap-3 cursor-pointer group"
-                    onClick={() => setCurrentPage('home')}
-                >
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center rounded-lg shadow-[0_0_15px_rgba(0,238,255,0.4)] group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-background-dark font-bold">directions_boat</span>
+                <div className="flex items-center gap-8">
+                    {/* Logo */}
+                    <div
+                        className="flex items-center gap-3 cursor-pointer group"
+                        onClick={() => setCurrentPage('home')}
+                    >
+                        <div className="w-10 h-10 flex items-center justify-center rounded-lg shadow-lg group-hover:scale-110 transition-all duration-300 bg-primary shadow-[0_0_15px_var(--glow-color)]">
+                            <span className="material-symbols-outlined text-background-dark font-bold">directions_boat</span>
+                        </div>
+                        <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">
+                            STS <span className="font-light transition-colors text-primary">Guardian</span>
+                        </h1>
                     </div>
-                    <h1 className="text-xl font-bold tracking-tight text-white">
-                        STS <span className="text-primary font-light">Guardian</span>
-                    </h1>
+
+                    {/* Fuel Toggle Switch */}
+                    <div className="flex bg-black/40 border border-white/10 p-1 rounded-full items-center relative">
+                        <button 
+                            onClick={() => setFuelType('NH3')}
+                            className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all z-10 w-[80px] sm:w-[100px] text-center ${fuelType === 'NH3' ? 'text-background-dark' : 'text-slate-400 hover:text-white'}`}
+                        >
+                            NH3 암모니아
+                        </button>
+                        <button 
+                            onClick={() => setFuelType('LH2')}
+                            className={`px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all z-10 w-[80px] sm:w-[100px] text-center ${fuelType === 'LH2' ? 'text-background-dark' : 'text-slate-400 hover:text-white'}`}
+                        >
+                            LH2 액화수소
+                        </button>
+                        
+                        {/* Sliding Background */}
+                        <div 
+                            className={`absolute top-1 bottom-1 w-[80px] sm:w-[100px] rounded-full transition-all duration-300 shadow-lg bg-primary shadow-[0_0_15px_var(--glow-color)] ${fuelType === 'LH2' ? 'left-[84px] sm:left-[104px]' : 'left-1'}`}
+                        />
+                    </div>
                 </div>
 
                 {/* Navigation (Desktop) */}

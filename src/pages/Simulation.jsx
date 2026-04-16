@@ -32,9 +32,20 @@ const SIM_MODULES = [
     }
 ];
 
-const Simulation = () => {
+const Simulation = ({ fuelType = 'NH3' }) => {
     const [selectedSimId, setSelectedSimId] = useState(SIM_MODULES[0].id);
     const selectedSim = SIM_MODULES.find(s => s.id === selectedSimId);
+
+    if (fuelType === 'LH2') {
+        return (
+            <div className="max-w-7xl mx-auto px-6 py-32 flex flex-col items-center justify-center text-center">
+                <div className="w-24 h-24 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-8 mx-auto">
+                    <span className="material-symbols-outlined text-5xl text-slate-500">pending</span>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-4">액화수소(LH2) 전용 과정</h2>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12">
@@ -52,7 +63,7 @@ const Simulation = () => {
                             key={sim.id}
                             onClick={() => setSelectedSimId(sim.id)}
                             className={`p-5 rounded-2xl border text-left transition-all duration-300 group ${selectedSimId === sim.id
-                                ? 'bg-primary/10 border-primary shadow-[0_0_20px_rgba(0,238,255,0.1)]'
+                                ? 'bg-primary/10 border-primary shadow-[0_0_20px_var(--glow-color-super-light)]'
                                 : 'bg-white/5 border-white/5 hover:border-white/20 active:scale-95'
                                 }`}
                         >
@@ -138,7 +149,7 @@ const Simulation = () => {
 
                         {/* Background Grid Pattern */}
                         <div className="absolute inset-0 opacity-10 pointer-events-none"
-                            style={{ backgroundImage: 'radial-gradient(circle, #00eeff 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+                            style={{ backgroundImage: 'radial-gradient(circle, var(--app-primary) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
                         </div>
 
                         <div className="absolute bottom-10 flex flex-col items-center gap-2 opacity-30">

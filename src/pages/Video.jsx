@@ -29,8 +29,19 @@ const VIDEO_LIST = [
     }
 ];
 
-const Video = () => {
+const Video = ({ fuelType = 'NH3' }) => {
     const [selectedVideo, setSelectedVideo] = useState(VIDEO_LIST[0]);
+
+    if (fuelType === 'LH2') {
+        return (
+            <div className="max-w-7xl mx-auto px-6 py-32 flex flex-col items-center justify-center text-center">
+                <div className="w-24 h-24 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-8 mx-auto">
+                    <span className="material-symbols-outlined text-5xl text-slate-500">pending</span>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-4">액화수소(LH2) 전용 과정</h2>
+            </div>
+        );
+    }
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-12">
@@ -90,7 +101,7 @@ const Video = () => {
                                 key={item.id}
                                 onClick={() => setSelectedVideo(item)}
                                 className={`flex gap-4 p-4 rounded-2xl border transition-all duration-300 text-left group ${selectedVideo.id === item.id
-                                    ? 'bg-primary/10 border-primary shadow-[0_0_15px_rgba(0,238,255,0.1)]'
+                                    ? 'bg-primary/10 border-primary shadow-[0_0_15px_var(--glow-color-super-light)]'
                                     : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'
                                     }`}
                             >

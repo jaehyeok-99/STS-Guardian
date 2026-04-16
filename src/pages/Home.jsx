@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Home = ({ setCurrentPage }) => {
+const Home = ({ setCurrentPage, fuelType = 'NH3' }) => {
     const scrollToModules = () => {
         const el = document.getElementById('modules');
         el?.scrollIntoView({ behavior: 'smooth' });
@@ -27,7 +27,7 @@ const Home = ({ setCurrentPage }) => {
 
                         <h1 className="text-6xl lg:text-8xl font-black leading-tight mb-8 text-white tracking-tighter">
                             미래 에너지를 위한<br />
-                            <span className="text-primary drop-shadow-[0_0_15px_rgba(0,238,255,0.3)]">안전의 표준</span>
+                            <span className="text-primary drop-shadow-[0_0_15px_var(--glow-color-light)]">안전의 표준</span>
                         </h1>
 
                         <p className="text-xl lg:text-2xl text-slate-400 mb-14 max-w-3xl leading-relaxed">

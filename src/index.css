@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #00eeff;
-  --color-secondary: #0077ff;
+  --color-primary: var(--app-primary);
+  --color-secondary: var(--app-secondary);
   --color-background-light: #f5f8f8;
-  --color-background-dark: #0f2223;
-  --color-surface-dark: #162e30;
-  --color-border-dark: #27393a;
-  --color-card-bg: #162a2b;
+  --color-background-dark: var(--app-bg-dark);
+  --color-surface-dark: var(--app-surface-dark);
+  --color-border-dark: var(--app-border-dark);
+  --color-card-bg: var(--app-card-bg);
 
   --font-display: "Space Grotesk", "Noto Sans KR", sans-serif;
 
@@ -16,43 +16,76 @@
   --radius-xl: 0.75rem;
 }
 
+:root {
+  /* NH3 (Ammonia - 황토색/Amber 테마 - DEFAULT) */
+  --app-primary: #f59e0b;
+  --app-secondary: #d97706;
+  --app-bg-dark: #1c130b;
+  --app-surface-dark: #26190e;
+  --app-border-dark: #3a2512;
+  --app-card-bg: #21160d;
+  
+  --glow-color: rgba(245, 158, 11, 0.4);
+  --glow-color-hover: rgba(245, 158, 11, 0.6);
+  --glow-color-light: rgba(245, 158, 11, 0.2);
+  --glow-color-super-light: rgba(245, 158, 11, 0.1);
+  --bg-gradient-color: rgba(245, 158, 11, 0.05);
+}
+
+[data-theme="lh2"] {
+  /* LH2 (Liquid Hydrogen - 청록색/Cyan 테마) */
+  --app-primary: #00eeff;
+  --app-secondary: #0077ff;
+  --app-bg-dark: #0f2223;
+  --app-surface-dark: #162e30;
+  --app-border-dark: #27393a;
+  --app-card-bg: #162a2b;
+
+  --glow-color: rgba(0, 238, 255, 0.4);
+  --glow-color-hover: rgba(0, 238, 255, 0.6);
+  --glow-color-light: rgba(0, 238, 255, 0.2);
+  --glow-color-super-light: rgba(0, 238, 255, 0.1);
+  --bg-gradient-color: rgba(0, 238, 255, 0.05);
+}
+
 @layer base {
   body {
     @apply bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen selection:bg-primary/30;
-    background-image: radial-gradient(circle at 20% 20%, rgba(0, 238, 255, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(0, 238, 255, 0.05) 0%, transparent 40%);
+    transition: background-color 0.5s ease;
+    background-image: radial-gradient(circle at 20% 20%, var(--bg-gradient-color) 0%, transparent 40%), radial-gradient(circle at 80% 80%, var(--bg-gradient-color) 0%, transparent 40%);
   }
 }
 
 @layer components {
   .hud-line {
-    background: linear-gradient(90deg, transparent 0%, #00eeff 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, var(--app-primary) 50%, transparent 100%);
     height: 1px;
     width: 100%;
     opacity: 0.3;
   }
 
   .glass-panel {
-    background: rgba(22, 42, 43, 0.8);
+    background-color: var(--app-surface-dark);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(0, 238, 255, 0.1);
+    border: 1px solid var(--glow-color-super-light);
   }
 
   .neon-glow {
-    box-shadow: 0 0 15px rgba(0, 238, 255, 0.4);
+    box-shadow: 0 0 15px var(--glow-color);
     @apply transition-all;
   }
 
   .neon-glow:hover {
-    box-shadow: 0 0 25px rgba(0, 238, 255, 0.6);
+    box-shadow: 0 0 25px var(--glow-color-hover);
   }
 
   .card-glow:hover {
-    box-shadow: 0 0 20px rgba(0, 238, 255, 0.2);
-    border-color: #0ef;
+    box-shadow: 0 0 20px var(--glow-color-light);
+    border-color: var(--app-primary);
   }
 
   .bg-piping {
-    background-image: linear-gradient(rgba(15, 34, 35, 0.95), rgba(15, 34, 35, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAl1OxKsISvyn_4sj4W669TzDXZFVtuHniRh2BprFmWZrlcdyz_KgMfFyYsLAEpAQQrRmWxYmPN7vcQIa2nPHJgdsSn1DRz03cxM0VOUU75A0iJ97IwRn9hjFJx7P_NiIkGUHyix0VIGuBL1cpmJdo3AT5nAwyCYgNmCji7S0wJoAwgm4l96l857Ul-nolx7P-mFKjw8XDmNnLhIsmqJOgiNzNNiQ98LQEyN2ObW3BKLdLHernKFsaSlycMdci9QpQahrwGsissgBU);
+    background-image: linear-gradient(rgba(28, 19, 11, 0.95), rgba(28, 19, 11, 0.95)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuAl1OxKsISvyn_4sj4W669TzDXZFVtuHniRh2BprFmWZrlcdyz_KgMfFyYsLAEpAQQrRmWxYmPN7vcQIa2nPHJgdsSn1DRz03cxM0VOUU75A0iJ97IwRn9hjFJx7P_NiIkGUHyix0VIGuBL1cpmJdo3AT5nAwyCYgNmCji7S0wJoAwgm4l96l857Ul-nolx7P-mFKjw8XDmNnLhIsmqJOgiNzNNiQ98LQEyN2ObW3BKLdLHernKFsaSlycMdci9QpQahrwGsissgBU);
     background-size: cover;
     background-attachment: fixed;
   }

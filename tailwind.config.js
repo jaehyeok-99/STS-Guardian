@@ -8,11 +8,11 @@ export default {
     theme: {
         extend: {
             colors: {
-                "primary": "#00eeff",
+                "primary": "rgb(var(--app-primary) / <alpha-value>)",
                 "background-light": "#f5f8f8",
-                "background-dark": "#0f2223",
-                "surface-dark": "#162e30",
-                "border-dark": "#27393a",
+                "background-dark": "rgb(var(--app-bg-dark) / <alpha-value>)",
+                "surface-dark": "rgb(var(--app-surface-dark) / <alpha-value>)",
+                "border-dark": "rgb(var(--app-border-dark) / <alpha-value>)",
             },
             fontFamily: {
                 "display": ["Space Grotesk", "sans-serif"]

@@ -66,13 +66,24 @@ const QUESTION_BANK = [
     }
 ];
 
-const Quiz = () => {
+const Quiz = ({ fuelType = 'NH3' }) => {
     const [step, setStep] = useState('role-select'); // 'role-select', 'testing', 'result'
     const [selectedRole, setSelectedRole] = useState(null);
     const [currentIdx, setCurrentIdx] = useState(0);
     const [score, setScore] = useState(0);
     const [startTime, setStartTime] = useState(null);
     const [results, setResults] = useState([]);
+
+    if (fuelType === 'LH2') {
+        return (
+            <div className="max-w-5xl mx-auto px-6 py-20 flex flex-col items-center justify-center text-center mt-10">
+                <div className="w-24 h-24 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-8">
+                    <span className="material-symbols-outlined text-5xl text-slate-500">pending</span>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-4">액화수소(LH2) 전용 과정</h2>
+            </div>
+        );
+    }
 
     const startQuiz = (role) => {
         setSelectedRole(role);
@@ -166,7 +177,7 @@ const Quiz = () => {
                         </div>
 
                         <div className="glass-panel p-10 rounded-[40px] border border-white/10 relative overflow-hidden mb-8">
-                            <div className="absolute top-0 left-0 w-1 h-full bg-primary shadow-[0_0_15px_rgba(0,238,255,0.5)]"></div>
+                            <div className="absolute top-0 left-0 w-1 h-full bg-primary shadow-[0_0_15px_var(--glow-color)]"></div>
                             <h3 className="text-2xl lg:text-3xl font-bold text-white leading-tight italic">
                                 "{filteredQuestions[currentIdx].question}"
                             </h3>

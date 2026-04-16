@@ -144,12 +144,11 @@ const EAPContent = () => {
                 </div>
                 <div className="flex gap-2 mb-10 overflow-x-auto pb-2 custom-scrollbar">
                     {accidents.map(acc => (
-                        <button 
+                        <button
                             key={acc.id}
                             onClick={() => setSelectedA(acc.id)}
-                            className={`flex whitespace-nowrap items-center gap-2 px-5 py-3 rounded-full border text-sm transition-all ${
-                                selectedA === acc.id ? 'bg-primary text-background-dark font-bold border-primary shadow-[0_0_15px_rgba(0,238,255,0.3)]' : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'
-                            }`}
+                            className={`flex whitespace-nowrap items-center gap-2 px-5 py-3 rounded-full border text-sm transition-all ${selectedA === acc.id ? 'bg-primary text-background-dark font-bold border-primary shadow-[0_0_15px_var(--glow-color-light)]' : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10 hover:text-white'
+                                }`}
                         >
                             <span className="font-mono text-xs opacity-70">{acc.id}</span>
                             {acc.title}
@@ -159,30 +158,30 @@ const EAPContent = () => {
             </div>
 
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-6 mb-12">
-                    <div className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
-                        <span className="material-symbols-outlined text-sm">task_alt</span> Action Sequence (사고 발생에 따른 대응 절차)
-                    </div>
-                        
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                        {activeResponses.map((res, idx) => (
-                            <motion.div
-                                key={res.id}
-                                initial={false}
-                                animate={{ opacity: selectedA ? 1 : 0.5, y: selectedA ? 0 : 5 }}
-                                transition={{ delay: selectedA ? idx * 0.1 : 0 }}
-                                className={`p-5 rounded-xl border flex flex-col items-start gap-4 transition-all duration-300 ${selectedA ? 'bg-white/5 border-primary/30 hover:border-primary text-white shadow-[0_0_15px_rgba(0,238,255,0.05)]' : 'bg-white/5 border-white/10 text-slate-400'}`}
-                            >
-                                <div className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm transition-colors ${selectedA ? 'bg-primary text-background-dark shadow-[0_0_10px_rgba(0,238,255,0.4)]' : 'bg-white/10'}`}>
-                                    {idx + 1}
-                                </div>
-                                <div className="w-full">
-                                    <div className={`text-xs font-mono font-bold mb-1 transition-colors ${selectedA ? 'text-primary' : 'text-slate-500'}`}>{res.id}</div>
-                                    <div className="font-bold text-[15px] mb-2">{res.title}</div>
-                                    <div className="text-xs text-slate-400 leading-relaxed border-t border-white/10 pt-2 mt-2">{res.desc}</div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                <div className="text-xs font-bold text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm">task_alt</span> Action Sequence (사고 발생에 따른 대응 절차)
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                    {activeResponses.map((res, idx) => (
+                        <motion.div
+                            key={res.id}
+                            initial={false}
+                            animate={{ opacity: selectedA ? 1 : 0.5, y: selectedA ? 0 : 5 }}
+                            transition={{ delay: selectedA ? idx * 0.1 : 0 }}
+                            className={`p-5 rounded-xl border flex flex-col items-start gap-4 transition-all duration-300 ${selectedA ? 'bg-white/5 border-primary/30 hover:border-primary text-white shadow-[0_0_15px_var(--bg-gradient-color)]' : 'bg-white/5 border-white/10 text-slate-400'}`}
+                        >
+                            <div className={`w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-bold text-sm transition-colors ${selectedA ? 'bg-primary text-background-dark shadow-[0_0_10px_var(--glow-color)]' : 'bg-white/10'}`}>
+                                {idx + 1}
+                            </div>
+                            <div className="w-full">
+                                <div className={`text-xs font-mono font-bold mb-1 transition-colors ${selectedA ? 'text-primary' : 'text-slate-500'}`}>{res.id}</div>
+                                <div className="font-bold text-[15px] mb-2">{res.title}</div>
+                                <div className="text-xs text-slate-400 leading-relaxed border-t border-white/10 pt-2 mt-2">{res.desc}</div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex flex-col gap-6 mt-4">
@@ -213,7 +212,7 @@ const EAPContent = () => {
     );
 };
 
-const THEORY_TOPICS = [
+const NH3_TOPICS = [
     {
         id: 'intro',
         category: '기초 지식',
@@ -298,9 +297,81 @@ const THEORY_TOPICS = [
     }
 ];
 
-const Theory = () => {
-    const [selectedTopicId, setSelectedTopicId] = useState(THEORY_TOPICS[0].id);
-    const selectedTopic = THEORY_TOPICS.find(t => t.id === selectedTopicId);
+const LH2_TOPICS = [
+    {
+        id: 'lh2-intro',
+        category: '기초 지식',
+        title: '액화수소의 물리적 특성',
+        icon: 'science',
+        content: (
+            <div className="space-y-6">
+                <p className="text-slate-300 leading-relaxed">
+                    액화수소(LH2)는 무색, 무취의 극저온 액체로 가장 가벼운 원소입니다. 매우 넓은 연소 범위와 극도로 낮은 빙점 때문에 암모니아와는 전혀 다른 안전 관리와 특수 설비가 필요합니다.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                        <h4 className="text-primary font-bold mb-2">비등점 (Boiling Point)</h4>
+                        <div className="text-2xl font-mono text-white">-252.8°C (1기압)</div>
+                        <p className="text-[11px] text-slate-500 mt-2">절대영도에 가까운 극저온 상태를 유지해야 하므로, 배관의 열수축 및 즉각적인 중증 동상 위험이 큽니다.</p>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 p-5 rounded-2xl">
+                        <h4 className="text-primary font-bold mb-2">연소 범위 (Flammability)</h4>
+                        <div className="text-2xl font-mono text-white">4.0% ~ 75.0%</div>
+                        <p className="text-[11px] text-slate-500 mt-2">공기 중 극미량의 정전기나 약한 스파크만으로도 쉽게 폭발할 수 있는 매우 넓고 위험한 연소 범위를 가집니다.</p>
+                    </div>
+                </div>
+            </div>
+        )
+    },
+    {
+        id: 'lh2-ppe',
+        category: '안전 장비',
+        title: '보호구(PPE) 및 방폭 장비',
+        icon: 'shield_person',
+        content: (
+            <div className="space-y-6">
+                <p className="text-slate-300 leading-relaxed">
+                    액화수소 작업 시 가장 핵심적인 보호 조치는 극저온 동상 방지와 정전기에 의한 점화 원천 차단입니다.
+                </p>
+                <ul className="space-y-4">
+                    <li className="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                        <span className="material-symbols-outlined text-primary">ac_unit</span>
+                        <div>
+                            <h4 className="font-bold text-white">극저온 전용 보호복</h4>
+                            <p className="text-xs text-slate-500 mt-1">-253°C의 액체 비산으로부터 피부를 완벽히 차단하는 다중 단열 보호 장갑 빛 안면 보호구.</p>
+                        </div>
+                    </li>
+                    <li className="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                        <span className="material-symbols-outlined text-primary">electrical_services</span>
+                        <div>
+                            <h4 className="font-bold text-white">제전 및 방폭 장구류</h4>
+                            <p className="text-xs text-slate-500 mt-1">정전기 방지용 안전화 착용 및 모든 휴대용 장비의 수소 대응 본질 방폭(Ex) 인증 필수.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        )
+    },
+    {
+        id: 'lh2-empty',
+        category: '심화 과정',
+        title: '공정 및 비상대응계획',
+        icon: 'pending',
+        content: (
+            <div className="space-y-6">
+                <p className="text-slate-300 leading-relaxed font-bold">
+                    운영 공정 및 비상대응(EAP) 프로세스 등 심화 액화수소(LH2) 과정을 준비 중입니다.
+                </p>
+            </div>
+        )
+    }
+];
+
+const Theory = ({ fuelType = 'NH3' }) => {
+    const TOPICS = fuelType === 'LH2' ? LH2_TOPICS : NH3_TOPICS;
+
+    const [selectedTopicId, setSelectedTopicId] = useState(TOPICS[0].id);
+    const selectedTopic = TOPICS.find(t => t.id === selectedTopicId) || TOPICS[0];
 
     return (
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row gap-12">
@@ -313,12 +384,12 @@ const Theory = () => {
                 <h2 className="text-3xl font-black text-white mb-10 leading-tight">이론 교육<br />커리큘럼</h2>
 
                 <nav className="flex flex-col gap-3">
-                    {THEORY_TOPICS.map((topic) => (
+                    {TOPICS.map((topic) => (
                         <button
                             key={topic.id}
                             onClick={() => setSelectedTopicId(topic.id)}
                             className={`p-5 rounded-2xl border text-left transition-all duration-300 group ${selectedTopicId === topic.id
-                                ? 'bg-primary/10 border-primary shadow-[0_0_20px_rgba(0,238,255,0.1)]'
+                                ? 'bg-primary/10 border-primary shadow-[0_0_20px_var(--glow-color-super-light)]'
                                 : 'bg-white/5 border-white/5 hover:border-white/20 active:scale-95'
                                 }`}
                         >
@@ -369,16 +440,7 @@ const Theory = () => {
                             </div>
                         </div>
 
-                        {/* Bottom Actions */}
-                        <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                                <span className="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">Learning in progress</span>
-                            </div>
-                            <button className="bg-white text-background-dark px-6 py-3 rounded-xl font-bold text-sm hover:scale-105 active:scale-95 transition-all">
-                                완료 및 다음으로
-                            </button>
-                        </div>
+
                     </motion.div>
                 </AnimatePresence>
             </div>
